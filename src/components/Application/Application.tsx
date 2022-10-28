@@ -20,6 +20,7 @@ import {
   Views,
 } from "framework7-react";
 import {StatsModal} from "../Modals/StatsModal/StatsModal";
+import {GameSettings} from "../Game/gameSettings";
 
 function Application() {
   return (
@@ -38,7 +39,7 @@ function Application() {
               <Icon f7={"bars"}></Icon>
             </NavRight>
           </div>
-          <Game />
+          <Game settings={GameSettings.Easy} />
           <StatsModal />
         </Page>
       </View>

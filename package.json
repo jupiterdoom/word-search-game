@@ -13,6 +13,7 @@
     "framework7": "^7.0.8",
     "framework7-icons": "^5.0.5",
     "framework7-react": "^7.0.8",
+    "random-words": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

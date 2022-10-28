@@ -4,16 +4,26 @@ import { Grid } from "./Grid/Grid";
 import WordSearch from "@blex41/word-search";
 import { SelectionColors } from "./SelectionColors/SelectionColors";
 
+import randomWords from "random-words";
+import { GameSettings } from "./gameSettings";
+
 export type ColorsMap = {
   [word in string]: string;
 };
 
-export function Game() {
+export type GameType = {
+  settings: GameSettings;
+};
+
+export function Game({ settings }: GameType) {
   const options = {
-    cols: 7,
-    rows: 7,
-    disabledDirections: ["N", "W", "NW", "SW"],
-    dictionary: ["ИЛЬЯ", "СЕРГЕЙ", "ПЕТР", "ДМИТРИЙ", "АЛЕКСЕЙ"],
+    cols: settings.gridLength,
+    rows: settings.gridLength,
+    disabledDirections: [],
+    dictionary: randomWords({
+      exactly: settings.exactlyWords,
+      maxLength: settings.maxWordLength,
+    }).filter(x => x.length > 2),
     maxWords: 20,
     backwardsProbability: 0.3,
     upperCase: true,
