@@ -26,8 +26,8 @@ function Application() {
     <App theme="auto" name="My App" id="com.demoapp.test">
       {/* Your main view, should have "main" prop */}
       <View main>
-        <Page>
-          <Navbar title={"LOGO"}>
+        <Page bgColor={'lightblue'} colorTheme='white'>
+          <div title={"LOGO"}>
             <NavLeft>
               <Link popupOpen={".demo-popup-swipe"}>
                 <Icon f7={"chart_bar_alt_fill"} />
@@ -37,8 +37,7 @@ function Application() {
             <NavRight>
               <Icon f7={"bars"}></Icon>
             </NavRight>
-          </Navbar>
-          <BlockTitle>Scroll bottom</BlockTitle>
+          </div>
           <Game />
           <StatsModal />
         </Page>

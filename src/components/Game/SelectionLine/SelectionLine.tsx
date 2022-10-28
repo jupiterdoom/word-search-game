@@ -1,6 +1,6 @@
 import React from "react";
 import "./SelectionLine.scss";
-import { CellType, SelectionLineType } from "../types";
+import {CellType, SelectionColoredLineType, SelectionLineType} from "../types";
 
 const getLineLength = (from: CellType, to: CellType) => {
   return Math.sqrt(Math.pow(to.x - from.x, 2) + Math.pow(to.y - from.y, 2));
@@ -10,11 +10,15 @@ const getLineAngle = (from: CellType, to: CellType) => {
   return (Math.atan2(to.y - from.y, to.x - from.x) * 180) / Math.PI;
 };
 
-const SelectionLine = ({ fromCell: from, toCell: to }: SelectionLineType) => {
+const SelectionLine = ({
+  fromCell: from,
+  toCell: to,
+  clientWidth,
+  colorClass = "selected",
+}: SelectionColoredLineType & { clientWidth: number }) => {
   const length = getLineLength(from, to);
   const angle = getLineAngle(from, to);
 
-  let colorClass = "selected";
   if (angle % 45 !== 0) {
     colorClass = "";
   }
@@ -27,9 +31,9 @@ const SelectionLine = ({ fromCell: from, toCell: to }: SelectionLineType) => {
   // }
 
   const style = {
-    width: `${length * 50}px`,
-    left: `${from.x * 50 + 25}px`,
-    top: `${from.y * 50 + Math.floor(25 / 2)}px`,
+    width: `${length * clientWidth}px`,
+    left: `${from.x * clientWidth + Math.floor(clientWidth / 2)}px`,
+    top: `${from.y * clientWidth + Math.floor(clientWidth / 4)}px`,
     // rotate: `rotate(${angle}deg)`,
     transform: `rotate(${angle}deg)`,
   };

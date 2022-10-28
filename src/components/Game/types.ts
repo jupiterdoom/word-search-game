@@ -8,3 +8,7 @@ export type SelectionLineType = {
   fromCell: CellType;
   toCell: CellType;
 }
+
+export type SelectionColoredLineType = SelectionLineType & {
+  colorClass: string;
+}

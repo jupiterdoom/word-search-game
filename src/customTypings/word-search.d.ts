@@ -2,8 +2,8 @@ declare module "@blex41/word-search" {
   declare class WordSearch {
     constructor(settings: WordSearch.WordSearchSettings);
 
-    data: WordSearchData;
-    settings: WordSearchSettings;
+    data: WordSearch.WordSearchData;
+    settings: WordSearch.WordSearchSettings;
   }
 
 
