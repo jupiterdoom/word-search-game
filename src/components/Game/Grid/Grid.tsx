@@ -10,6 +10,7 @@ import {
 } from "../types";
 import { WordList } from "../WordList/WordList";
 import { ColorsMap } from "../Game";
+import {HintType} from "../gameSettings";
 
 const getCell = (dataset: DOMStringMap): CellType => {
   const { x, y, symbol } = dataset;
@@ -23,8 +24,9 @@ function isDefined<T>(x: T): x is Exclude<T, undefined> {
 export type GridType = {
   ws: WordSearch.WordSearchReturnType;
   colorsMap: ColorsMap;
+  hint: HintType;
 };
-export function Grid({ ws, colorsMap }: GridType) {
+export function Grid({ ws, colorsMap, hint }: GridType) {
   const [gridOffset, setGridOffset] = useState(null);
   const gridRef = useRef(null);
   console.log(colorsMap);
@@ -157,6 +159,7 @@ export function Grid({ ws, colorsMap }: GridType) {
       <WordList
         words={ws.data.words.map((x) => x.word)}
         selectedWords={selectedWords}
+        hint={hint}
       />
     </div>
   );

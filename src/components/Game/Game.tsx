@@ -5,7 +5,7 @@ import WordSearch from "@blex41/word-search";
 import { SelectionColors } from "./SelectionColors/SelectionColors";
 
 import randomWords from "random-words";
-import { GameSettings } from "./gameSettings";
+import { Difficult, GameSettings, HintType } from "./gameSettings";
 
 export type ColorsMap = {
   [word in string]: string;
@@ -23,7 +23,7 @@ export function Game({ settings }: GameType) {
     dictionary: randomWords({
       exactly: settings.exactlyWords,
       maxLength: settings.maxWordLength,
-    }).filter(x => x.length > 2),
+    }).filter((x) => x.length > 2),
     maxWords: 20,
     backwardsProbability: 0.3,
     upperCase: true,
@@ -41,5 +41,13 @@ export function Game({ settings }: GameType) {
     {} as ColorsMap
   );
 
-  return <Grid ws={ws} colorsMap={colorsMap} />;
+  // TODO: вынести в отдельный хелпер или функцию или класс, который умеет переданные ему правила css вставлять/менять
+  if (settings.difficult !== Difficult.EASY) {
+    const sheet = window.document.styleSheets[0];
+    sheet.insertRule(
+      ":root { --game-grid-symbol-size: var(--game-grid-small-symbol-size) !important; }"
+    );
+  }
+
+  return <Grid ws={ws} colorsMap={colorsMap} hint={settings.hint} />;
 }

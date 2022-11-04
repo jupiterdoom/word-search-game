@@ -1,0 +1,13 @@
+.Block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.Button {
+  width: 10rem;
+  background-image: linear-gradient(to top,var(--f7-button-bg-color),#fff) !important;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 10%) !important;
+}

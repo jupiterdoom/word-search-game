@@ -1,7 +1,7 @@
 .Cell {
   aspect-ratio: 1;
 
-  font-size: 3rem;
+  font-size: var(--game-grid-symbol-size);
 
   display:flex;
   justify-content: center;

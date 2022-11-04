@@ -1,7 +1,7 @@
 .line {
   padding: 0;
   margin: 0;
-  height: 3rem;
+  height: var(--game-grid-symbol-size);
   line-height: 1px;
   opacity: 0.5;
   position: absolute;
@@ -14,16 +14,16 @@
   content: '';
   display: inline-block;
   position: absolute;
-  width: 3rem;
-  height: 3rem;
+  width: var(--game-grid-symbol-size);
+  height: var(--game-grid-symbol-size);
 }
 
 .line::before {
   right: 99%;
-  border-radius: calc(3rem / 2) 0 0 calc(3rem / 2);
+  border-radius: calc(var(--game-grid-symbol-size) / 2) 0 0 calc(var(--game-grid-symbol-size) / 2);
 }
 
 .line::after {
   left: 99%;
-  border-radius: 0 calc(3rem / 2) calc(3rem / 2) 0;
+  border-radius: 0 calc(var(--game-grid-symbol-size) / 2) calc(var(--game-grid-symbol-size) / 2) 0;
 }

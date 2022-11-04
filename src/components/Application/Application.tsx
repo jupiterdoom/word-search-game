@@ -19,15 +19,21 @@ import {
   View,
   Views,
 } from "framework7-react";
-import {StatsModal} from "../Modals/StatsModal/StatsModal";
-import {GameSettings} from "../Game/gameSettings";
+import { StatsModal } from "../Modals/StatsModal/StatsModal";
+import { Difficult, GameSettings } from "../Game/gameSettings";
+
+import "./App.css";
+import { MainScreen } from "../Game/MainScreen/MainScreen";
 
 function Application() {
+  const [difficult, setDifficult] = useState<Difficult | undefined>(undefined);
+  const settings = difficult ? GameSettings[difficult] : GameSettings.Easy;
+
   return (
     <App theme="auto" name="My App" id="com.demoapp.test">
       {/* Your main view, should have "main" prop */}
       <View main>
-        <Page bgColor={'lightblue'} colorTheme='white'>
+        <Page>
           <div title={"LOGO"}>
             <NavLeft>
               <Link popupOpen={".demo-popup-swipe"}>
@@ -39,7 +45,11 @@ function Application() {
               <Icon f7={"bars"}></Icon>
             </NavRight>
           </div>
-          <Game settings={GameSettings.Easy} />
+          {!difficult ? (
+            <MainScreen onClick={setDifficult} />
+          ) : (
+            <Game settings={settings} />
+          )}
           <StatsModal />
         </Page>
       </View>

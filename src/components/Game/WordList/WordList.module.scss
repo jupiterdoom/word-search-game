@@ -1,8 +1,13 @@
-.word {
-  color: white;
-  font-size: 5rem;
+.Container {
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  width: 600px;
+  flex-wrap: wrap;
 }
 
-.selected {
-  color: grey;
+.Word {
+  font-size: 2rem;
+  padding: 0 0.5rem;
+  text-transform: uppercase;
 }
